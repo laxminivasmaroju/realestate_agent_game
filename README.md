@@ -41,17 +41,8 @@ After playing, a learner should be able to:
 - Your result is the average percentage error on unseen houses. It is compared with an expert pipeline for that level.
 - When you lose, the game re-runs your pipeline with one step at a time swapped for the expert choice. This shows exactly which step cost you the most.
 
-### Playtest evidence
-| Playtester | Level reached | Final reputation | Feedback |
-|---|---|---|---|
-| (name) | | | |
-| (name) | | | |
-| (name) | | | |
-
-**What I changed after playtesting:**
-- (write one or two changes you made, or planned, based on feedback)
 
 ---
 
-## Other assignment: Nifty50 pipeline
+## Project: Nifty50 pipeline
 Files: `nifty50_pipeline.ipynb` and `ADANI_ENTERPRISES.CSV`
