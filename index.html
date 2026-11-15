@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Price Whisperer: Build the Pipeline, Win the Deal</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e8f4ff;--card:#fff;--ink:#1b2a41;--mut:#5b6b82;--acc:#ff6b4a;--ok:#1fa463;--bad:#d7263d;--gold:#ffc933;--line:#c9dcf0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101b2d;--card:#1a2942;--ink:#eaf2ff;--mut:#9db0cc;--line:#2f4466}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Baloo 2",system-ui,sans-serif;font-size:16px;line-height:1.4}
+.wrap{max-width:980px;margin:0 auto;padding:12px}
+.top{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+h1{margin:0;font-size:26px;font-weight:800}
+.rep{display:flex;align-items:center;gap:8px;font-weight:700}
+.bar{width:150px;height:14px;border-radius:9px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);transition:width .8s,background .8s}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px;margin:12px 0}
+.grid{display:grid;grid-template-columns:1fr 1.3fr;gap:12px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.scene{text-align:center}
+.cust{font-size:84px;display:inline-block;animation:bob 2s ease-in-out infinite}
+.agent{font-size:56px;display:inline-block;animation:bob 2.4s ease-in-out infinite .3s}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.bubble{background:var(--gold);color:#1b2a41;border-radius:16px;padding:10px 12px;margin:6px auto;max-width:320px;font-weight:700;position:relative}
+.step{border-left:6px solid var(--acc);padding:6px 10px;margin:8px 0;background:rgba(255,107,74,.07);border-radius:0 12px 12px 0}
+.step b{font-size:17px}.hint{color:var(--mut);font-size:14px}
+select,button{font:inherit;border-radius:12px;border:2px solid var(--line);padding:6px 10px;background:var(--card);color:var(--ink)}
+select{width:100%;margin-top:4px}
+button.go{background:var(--acc);color:#fff;border:0;font-weight:800;font-size:19px;padding:10px 20px;cursor:pointer;box-shadow:0 4px 0 #b9442b}
+button.go:active{transform:translateY(3px);box-shadow:none}
+button.sec{cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:3px 6px;text-align:right;border-bottom:1px solid var(--line)}th:first-child,td:first-child{text-align:left}
+.warn{color:var(--bad);font-weight:700}
+.scroll{overflow-x:auto}
+.feats label{display:inline-flex;gap:4px;margin:3px 10px 3px 0;align-items:center}
+.belt{display:flex;justify-content:space-around;gap:4px;margin:10px 0}
+.st{text-align:center;font-size:13px;opacity:.35;transition:.3s;flex:1}.st span{display:block;font-size:40px}
+.st.on{opacity:1;transform:scale(1.2)}.st.on span{animation:pop .5s}
+@keyframes pop{30%{transform:scale(1.5) rotate(-12deg)}}
+.big{font-size:34px;font-weight:800}
+.win{animation:pop .8s}.shake{animation:shake .5s}
+@keyframes shake{25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+.mist{border-left:6px solid var(--bad);padding:6px 10px;margin:8px 0;border-radius:0 12px 12px 0;background:rgba(215,38,61,.07)}
+.good{border-left-color:var(--ok);background:rgba(31,164,99,.08)}
+.hide{display:none}
+body{background-image:radial-gradient(var(--line) 2px,transparent 2px);background-size:22px 22px}
+.card{border:3px solid var(--ink);box-shadow:0 5px 0 var(--ink)}
+.stage{position:relative;height:230px;border-radius:20px;border:3px solid #1b2a41;box-shadow:0 5px 0 #1b2a41;overflow:hidden;background:linear-gradient(#6ec3ff,#d8f1ff 72%);margin:10px 0}
+.stage:before{content:"🏙️🏘️🏡🏘️🏙️";position:absolute;bottom:40px;left:0;right:0;font-size:46px;letter-spacing:6px;text-align:center;opacity:.85}
+.cloud{position:absolute;top:12px;font-size:36px;animation:drift 22s linear infinite}
+@keyframes drift{from{left:-10%}to{left:100%}}
+.ground{position:absolute;bottom:0;left:0;right:0;height:42px;background:#4cb36a;border-top:5px solid #2e8049}
+.actor{position:absolute;bottom:22px;font-size:78px;animation:bob 2s ease-in-out infinite;transition:left 1.6s ease-in,opacity 1.6s}
+#ag{left:10%}#cu{left:58%}.walk{left:118%!important;opacity:.2}
+.sign{position:absolute;top:8px;right:10px;background:#fff;color:#1b2a41;border:3px solid #1b2a41;border-radius:10px;padding:0 10px;font-weight:800}
+.talk{position:absolute;top:12px;left:12px;max-width:62%;font-size:15px;z-index:2}
+.stamp{position:absolute;top:70px;left:30%;font-size:44px;font-weight:800;border:6px solid;padding:0 14px;border-radius:10px;background:rgba(255,255,255,.9);transform:rotate(-12deg) scale(3);opacity:0;animation:stampin .5s .2s forwards;z-index:3}
+@keyframes stampin{to{transform:rotate(-12deg) scale(1);opacity:1}}
+.fall{position:fixed;top:-40px;font-size:30px;animation:fall 2s linear forwards;z-index:9;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.step{border:3px solid var(--ink);border-left-width:10px;border-radius:14px}
+@media(max-width:600px){.stage{height:200px}.actor{font-size:58px;bottom:20px}.stage:before{font-size:26px;bottom:38px;letter-spacing:2px}.sign{font-size:13px;top:6px;right:6px}.stamp{font-size:28px;top:60px;left:18%}.cloud{font-size:26px}h1{font-size:22px}.bar{width:100px}}
+@media(prefers-reduced-motion:reduce){.cloud,.fall,.actor{animation:none!important}.stamp{animation:none!important;opacity:1;transform:rotate(-12deg)}}
+</style></head><body><div class="wrap">
+<div class="top"><h1>🏠 Price Whisperer</h1>
+<div class="rep"><span id="lv"></span><span>Reputation</span><div class="bar"><i id="rb"></i></div><b id="rn"></b><button class="sec" id="mute" aria-label="Toggle sound">🔊</button></div></div>
+<div id="app"></div>
+</div>
+<script>
+// ---------- audio ----------
+let sound=true;const AC=window.AudioContext||window.webkitAudioContext;let ac;
+function tone(f,d=.12,type="square",when=0,vol=.06){if(!sound||!AC)return;try{ac=ac||new AC();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;g.gain.value=vol;g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+when+d);o.connect(g);g.connect(ac.destination);o.start(ac.currentTime+when);o.stop(ac.currentTime+when+d)}catch(e){}}
+const sfx={tick:()=>tone(520,.1),win:()=>[523,659,784,1047].forEach((f,i)=>tone(f,.18,"triangle",i*.12)),lose:()=>[300,240,180].forEach((f,i)=>tone(f,.25,"sawtooth",i*.16)),click:()=>tone(700,.05)};
+document.getElementById("mute").onclick=e=>{sound=!sound;e.target.textContent=sound?"🔊":"🔇"};
+// ---------- data ----------
+function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const gauss=r=>Math.sqrt(-2*Math.log(r()+1e-12))*Math.cos(6.2832*r());
+const NBE={Downtown:.4,Suburb:0,Rural:-.35};
+function makeData(L){const r=rng(100+L*7),rows=[];
+ const NN=L==3?64:L==4?120:240;for(let i=0;i<NN;i++){const sqft=600+Math.floor(r()*2400),beds=Math.max(1,Math.min(5,Math.round(sqft/700+gauss(r)*.7))),age=Math.floor(r()*60),dist=Math.round(1+r()*29),garage=r()<.5?1:0;
+  const nb=L<2?"Suburb":["Downtown","Suburb","Rural"][Math.floor(r()*3)];
+  const ln=11+.0006*sqft+.05*beds-.006*age-.015*dist+.08*garage+NBE[nb]+.05*gauss(r);const price=Math.round(Math.exp(ln)*25);
+  const row={sqft,beds,age,dist,garage,price};if(L>=2)row.neighborhood=nb;if(L==2||L==4)row.sold_price_per_sqft_agent=Math.round(price/sqft*(1+.02*gauss(r)));if(L>=3)for(let j=1;j<=(L==3?28:8);j++)row["listing_code_"+j]=Math.round(gauss(r)*1000);rows.push(row)}
+ const train=[],test=[];rows.forEach((x,i)=>(i%4==0?test:train).push(x));
+ if(L==1||L==2||L==4){const mr=L==4?.2:.12;[...train,...test].forEach(x=>{if(r()<mr)x.sqft=null;if(r()<mr)x.age=null});
+  let k=0;for(const x of train){if(x.sqft!=null&&k<5&&r()<.1){x.sqft*=10;k++}}}
+ test.forEach(x=>{if("sold_price_per_sqft_agent"in x)x.sold_price_per_sqft_agent=null});
+ return{train,test,cust:3,cols:Object.keys(rows[0]).filter(c=>c!="price")}}
+// ---------- ML pipeline (real computation) ----------
+const avg=a=>a.reduce((s,x)=>s+x,0)/a.length,med=a=>{const s=[...a].sort((x,y)=>x-y);return s[s.length>>1]};
+function solve(A,q){for(let c=0;c<q;c++){let p=c;for(let r=c+1;r<q;r++)if(Math.abs(A[r][c])>Math.abs(A[p][c]))p=r;[A[c],A[p]]=[A[p],A[c]];const d=A[c][c]||1e-9;for(let j=c;j<=q;j++)A[c][j]/=d;for(let r=0;r<q;r++)if(r!=c){const f=A[r][c];for(let j=c;j<=q;j++)A[r][j]-=f*A[c][j]}}return A.map(r=>r[q])}
+function fit(X,y){const n=X.length,p=X[0].length,mu=[],sd=[];
+ for(let j=0;j<p;j++){const m=avg(X.map(r=>r[j]));mu.push(m);sd.push(Math.sqrt(avg(X.map(r=>(r[j]-m)**2)))||1)}
+ const q=p+1,A=Array.from({length:q},()=>Array(q+1).fill(0));
+ X.forEach((r,i)=>{const z=[1,...r.map((v,j)=>(v-mu[j])/sd[j])];for(let a=0;a<q;a++){for(let b=0;b<q;b++)A[a][b]+=z[a]*z[b];A[a][q]+=z[a]*y[i]}});
+ for(let a=1;a<q;a++)A[a][a]+=.001*n;const w=solve(A,q);
+ return r=>w[0]+r.reduce((s,v,j)=>s+w[j+1]*(v-mu[j])/sd[j],0)}
+const NBI={Downtown:0,Rural:1,Suburb:2};
+function runPipe(D,c){const num=c.feats.filter(f=>f!="neighborhood"),useNb=c.feats.includes("neighborhood");
+ let tr=D.train.map(r=>({...r})),te=D.test.map(r=>({...r}));
+ if(c.out!="none")for(const f of num){const v=tr.map(r=>r[f]).filter(x=>x!=null).sort((a,b)=>a-b);const q1=v[v.length*.25|0],q3=v[v.length*.75|0],lo=q1-1.5*(q3-q1),hi=q3+1.5*(q3-q1);
+  if(c.out=="iqr")tr=tr.filter(r=>r[f]==null||(r[f]>=lo&&r[f]<=hi));else tr.forEach(r=>{if(r[f]!=null)r[f]=Math.min(hi,Math.max(lo,r[f]))})}
+ if(c.miss=="drop")tr=tr.filter(r=>num.every(f=>r[f]!=null));
+ if(tr.length<20)return null;
+ for(const f of num){const v=tr.map(r=>r[f]).filter(x=>x!=null);const fill=c.miss=="zero"?0:c.miss=="median"?med(v):avg(v);[tr,te].forEach(s=>s.forEach(r=>{if(r[f]==null)r[f]=fill}))}
+ const mk=r=>{const x=num.map(f=>r[f]);if(useNb){if(c.cat=="label")x.push(NBI[r.neighborhood]);else x.push(r.neighborhood=="Downtown"?1:0,r.neighborhood=="Rural"?1:0)}return x};
+ const T=v=>c.log?Math.log(v):v,U=v=>c.log?Math.exp(v):v;
+ const pr=fit(tr.map(mk),tr.map(r=>T(r.price)));
+ const preds=te.map(r=>U(pr(mk(r))));
+ const mape=avg(te.map((r,i)=>Math.abs(preds[i]-r.price)/r.price));
+ return{mape,preds,nTrain:tr.length}}
+// ---------- levels ----------
+const EXPERT=[
+ {feats:["sqft","beds","age","dist","garage"],miss:"median",out:"none",cat:"onehot",log:true},
+ {feats:["sqft","beds","age","dist","garage"],miss:"median",out:"iqr",cat:"onehot",log:true},
+ {feats:["sqft","beds","age","dist","garage","neighborhood"],miss:"median",out:"iqr",cat:"onehot",log:true},
+ {feats:["sqft","beds","age","dist","garage","neighborhood"],miss:"median",out:"none",cat:"onehot",log:true},
+ {feats:["sqft","beds","age","dist","garage","neighborhood"],miss:"median",out:"iqr",cat:"onehot",log:true}];
+const LV=[
+ {name:"Clean Start",emoji:"👵",tol:.12,steps:["feat","log"],line:"Hi! I’m after a family home. Nothing fancy, just a fair price.",goal:"Concept: regression and feature choice. The data is clean. Pick the facts that drive price."},
+ {name:"Messy Listings",emoji:"🧔",tol:.10,steps:["feat","miss","out","log"],line:"Some of your listings look odd. Are you sure the numbers are right?",goal:"Concepts: missing values and outliers. Check the profile table for blanks and absurd maximums."},
+ {name:"The Trap",emoji:"🕴️",tol:.08,steps:["feat","miss","out","cat","log"],line:"I’m a hard bargainer. Wrong price and I walk. And I’ll tell everyone.",goal:"Concepts: categorical encoding and data leakage. Ask what you will know on the day a new house is listed."},{name:"Small Town",emoji:"👨‍🌾",tol:.08,k:1.12,steps:["feat","cat","log"],line:"Only a few homes sold here this year, and the records are full of strange codes.",goal:"Concept: overfitting. With very few examples, every useless column lets the model memorise noise. Keep only features that make sense."},{name:"Market Boss",emoji:"🦹",tol:.07,k:1.12,steps:["feat","miss","out","cat","log"],line:"Blanks, typos, a leaky column, junk codes and few sales. Impress me, rookie.",goal:"Final boss: every problem so far, together. Inspect the profile, then build a clean, honest pipeline."}];
+const WHY={
+ feats:"Choose features that carry real signal and that you will actually have for a brand-new listing. Leaving out sqft, age or neighborhood throws away signal. Including a column that only exists after the sale is data leakage: it looks great in training but is blank in the real world. Meaningless columns also hurt when you have few houses: the model memorises noise (overfitting).",
+ miss:"Filling blanks with the median is robust: it isn’t dragged by extreme values like the mean is. Filling with 0 invents tiny houses. Dropping rows wastes data, and you still can’t drop a customer’s house at prediction time.",
+ out:"Typos like 25,000 sqft stretch the fitted line. Removing values outside 1.5 × IQR (the interquartile range) cleans them without guessing. Doing nothing lets a few bad rows distort every prediction.",
+ cat:"Neighborhood is a category, not a number. Label encoding (0,1,2) pretends Rural is ‘between’ Downtown and Suburb. One-hot encoding gives each area its own switch, so the model learns each premium honestly.",
+ log:"House prices grow by percentages (a bigger house costs a multiple, not a fixed amount more). Modelling log(price) turns those multiples into straight lines a linear model fits well."};
+const NAMES={feats:"Features",miss:"Missing values",out:"Outliers",cat:"Categorical encoding",log:"Target transform"};
+// ---------- state ----------
+let S={lv:0,rep:60,res:{},att:{},cfg:null,data:null,stage:"intro"};
+const $=id=>document.getElementById(id),app=$("app");
+function header(){$("lv").textContent=S.stage=="intro"?"":`Level ${S.lv+1}/${LV.length}`;$("rn").textContent=S.rep;const b=$("rb");b.style.width=Math.max(0,Math.min(100,S.rep))+"%";b.style.background=S.rep>60?"var(--ok)":S.rep>30?"var(--gold)":"var(--bad)"}
+const money=v=>"₹"+(v/1e5).toFixed(1)+" L";
+function defCfg(L){return{feats:S.data.cols.filter(c=>c!="sold_price_per_sqft_agent"&&c!="neighborhood").slice(0,2),miss:"mean",out:"none",cat:"label",log:false}}
+// ---------- screens ----------
+function intro(){S.stage="intro";header();app.innerHTML=`<div class="stage"><span class="cloud">☁️</span><span class="actor" style="left:12%">🕴️</span><span class="actor" style="left:58%">🧑‍💼</span><div class="ground"></div></div><div class="card scene">
+<h2>You’re the area’s top real estate agent.</h2>
+<p>A customer wants a fair price. Quote it by building a <b>machine-learning pipeline</b> on real house data. Get close to the true sale price and you win the deal. Get it wrong and your reputation falls.</p>
+<p class="hint">5 levels. The data gets messier each time. There are no hints about the right steps: inspect the data, decide, then run your pipeline. At the end you get a coach report on every mistake.</p>
+<button class="go" id="start">Open the agency</button></div>
+<div class="card"><b>How to play</b><ol><li>Study the data profile (blanks, extremes, odd columns).</li><li>Set each pipeline step.</li><li>Run it. The model is trained on 75% of houses and judged on 25% it has never seen.</li><li>Win by beating the error limit. Lose and you can retry, at a cost.</li></ol></div>`;
+ $("start").onclick=()=>{sfx.click();S.lv=0;S.rep=60;S.res={};S.att={};level()}}
+function level(){S.stage="play";const L=LV[S.lv];S.data=makeData(S.lv);S.cfg=defCfg(S.lv);header();
+ const D=S.data,prof=D.cols.concat("price").map(c=>{const all=[...D.train,...D.test].map(r=>r[c]);const v=all.filter(x=>x!=null);const miss=all.length-v.length;
+  if(typeof v[0]=="string")return`<tr><td>${c}</td><td colspan="3">text: ${[...new Set(v)].join(", ")}</td><td class="${miss?"warn":""}">${miss}</td></tr>`;
+  return`<tr><td>${c}</td><td>${Math.min(...v).toLocaleString()}</td><td>${Math.max(...v).toLocaleString()}</td><td>${avg(v).toFixed(1)}</td><td class="${miss?"warn":""}">${miss}</td></tr>`}).join("");
+ const cols=D.cols,fl=cols.map(c=>`<label><input type="checkbox" data-f="${c}" ${S.cfg.feats.includes(c)?"checked":""}>${c}</label>`).join("");
+ const sel=(k,opts)=>`<select data-k="${k}" aria-label="${NAMES[k]}">${opts.map(o=>`<option value="${o[0]}">${o[1]}</option>`).join("")}</select>`;
+ const st={feat:`<div class="step"><b>🧺 Pick features</b><div class="hint">Which columns may the model use?</div><div class="feats">${fl}</div></div>`,
+  miss:`<div class="step"><b>🩹 Fix missing values</b>${sel("miss",[["mean","Fill with mean"],["median","Fill with median"],["zero","Fill with 0"],["drop","Drop rows with blanks"]])}</div>`,
+  out:`<div class="step"><b>🔎 Treat outliers</b>${sel("out",[["none","Leave as is"],["iqr","Remove (1.5 × IQR rule)"],["clip","Clip to IQR limits"]])}</div>`,
+  cat:`<div class="step"><b>🔤 Encode categories</b><div class="hint">Used only if neighborhood is selected.</div>${sel("cat",[["label","Label encode (0,1,2)"],["onehot","One-hot encode"]])}</div>`,
+  log:`<div class="step"><b>📐 Target</b>${sel("log",[["false","Predict price directly"],["true","Predict log(price)"]])}</div>`};
+ const key={feat:"feat",miss:"miss",out:"out",cat:"cat",log:"log"};
+ app.innerHTML=`<div class="stage"><span class="cloud">☁️</span><div class="sign">Level ${S.lv+1} · ${L.name}</div><span class="actor" id="ag">🕴️</span><span class="actor" id="cu">${L.emoji}</span><div class="ground"></div></div><div class="bubble" id="talk" style="margin:-2px auto 8px;max-width:520px;text-align:center">${L.line}</div><div class="grid"><div class="card scene">
+ <h3 style="margin:6px 0">Level ${S.lv+1}: ${L.name}</h3><div class="hint">${L.goal}</div><div class="hint">Error limit: ${(L.tol*100)|0}% average. Attempts so far: ${S.att[S.lv]||0}</div></div>
+ <div class="card"><b>📋 Data profile</b> <span class="hint">(${D.train.length+D.test.length} houses, price in ₹)</span><div class="scroll"><table><tr><th>column</th><th>min</th><th>max</th><th>mean</th><th>blank</th></tr>${prof}</table></div></div></div>
+ <div class="card"><h3 style="margin:0">🔧 Build your pipeline</h3>${L.steps.map(s=>st[key[s]]).join("")}
+ <div style="text-align:center;margin-top:10px"><button class="go" id="run">Run pipeline ▶</button></div></div><div id="out"></div>`;
+ app.querySelectorAll("[data-f]").forEach(e=>e.onchange=()=>{S.cfg.feats=[...app.querySelectorAll("[data-f]")].filter(x=>x.checked).map(x=>x.dataset.f);sfx.click()});
+ app.querySelectorAll("[data-k]").forEach(e=>e.onchange=()=>{const k=e.dataset.k;S.cfg[k]=k=="log"?e.value=="true":e.value;sfx.click()});
+ $("run").onclick=run}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function run(){if(!S.cfg.feats.length){$("out").innerHTML=`<div class="card warn">Pick at least one feature first.</div>`;return}
+ $("run").disabled=true;const L=LV[S.lv];
+ const stn=[["🔍","Inspect"],["🧹","Clean"],["🔤","Encode"],["🧠","Train"],["🏷️","Quote"]];
+ $("out").innerHTML=`<div class="card"><div class="belt">${stn.map((s,i)=>`<div class="st" id="s${i}"><span>${s[0]}</span>${s[1]}</div>`).join("")}</div><div id="res"></div></div>`;
+ for(let i=0;i<5;i++){$("s"+i).classList.add("on");tone(400+i*120,.15,"square");await sleep(520)}
+ const R=runPipe(S.data,S.cfg),E=runPipe(S.data,EXPERT[S.lv]);S.att[S.lv]=(S.att[S.lv]||0)+1;
+ if(!R){$("res").innerHTML=`<p class="warn big">💥 Pipeline crashed</p><p>Too few training rows survived. Choose a gentler way to deal with the data.</p>`;sfx.lose();S.rep=Math.max(0,S.rep-5);header();$("run").disabled=false;return}
+ const thr=Math.max(E.mape*(L.k||1.35),E.mape+(L.k?.004:.015)),limit=Math.min(L.tol,thr),lim=Math.max(limit,E.mape*(L.k||1.2)),win=R.mape<=lim;
+ const j=S.data.cust,q=R.preds[j],a=S.data.test[j].price,err=Math.abs(q-a)/a;
+ const delta=win?(S.att[S.lv]==1?20:12):-(15+Math.min(15,Math.round(R.mape*50)));
+ S.rep=Math.max(0,Math.min(100,S.rep+delta));
+ S.res[S.lv]={cfg:{...S.cfg,feats:[...S.cfg.feats]},mape:R.mape,exp:E.mape,win};
+ const dg=diagnose(S.cfg,R,S.lv);S.res[S.lv].diag=dg;win?sfx.win():sfx.lose();endScene(win,dg,q,a);
+ $("res").innerHTML=`<div class="${win?"win":"shake"}" style="text-align:center"><div class="big">${win?"🎉 Deal closed!":"😤 Customer walks away"}</div>
+ <p>You quoted <b>${money(q)}</b> for the customer’s house. The real sale price was <b>${money(a)}</b> (${(err*100).toFixed(1)}% off).</p>
+ <p>Average error on all unseen houses: <b>${(R.mape*100).toFixed(1)}%</b>. Limit to win: <b>${(lim*100).toFixed(1)}%</b>. Reputation ${delta>0?"+":""}${delta}.</p>
+ ${diagHTML(dg,win)}
+ <button class="go" id="nx">${win?(S.lv<LV.length-1?"Next level ▶":"See my coach report ▶"):(S.rep<=0?"See my coach report ▶":"Adjust & retry")}</button></div>`;
+ header();
+ $("nx").onclick=()=>{sfx.click();if(win){if(S.lv<LV.length-1){S.lv++;level()}else report()}else if(S.rep<=0)report();else{$("out").innerHTML="";$("run").disabled=false}};
+ $("nx").scrollIntoView({behavior:"smooth",block:"center"})}
+function fmt(k,c){if(k=="feats")return c.feats.join(", ");if(k=="log")return c.log?"log(price)":"price";return{mean:"mean",median:"median",zero:"zero",drop:"drop rows",none:"nothing",iqr:"IQR removal",clip:"clipping",label:"label encoding",onehot:"one-hot"}[c[k]]}
+function reportOld(){S.stage="report";header();let h="";const lvls=Object.keys(S.res).map(Number);
+ const wins=lvls.filter(i=>S.res[i].win).length;
+ const rank=S.rep>=90?"🏆 Legendary Agent":S.rep>=65?"🌟 Trusted Agent":S.rep>=35?"🙂 Rising Agent":"📉 Rookie: time to retrain";
+ h+=`<div class="card scene"><div class="big">${rank}</div><p>Final reputation <b>${S.rep}/100</b>. Levels cleared: <b>${wins}/${LV.length}</b>.</p></div>`;
+ lvls.forEach(i=>{const r=S.res[i],E=EXPERT[i],L=LV[i];h+=`<div class="card"><h3 style="margin:0">Level ${i+1}: ${L.name} ${r.win?"✅":"❌"}</h3><p class="hint">Your error ${(r.mape*100).toFixed(1)}% vs expert pipeline ${(r.exp*100).toFixed(1)}%</p>`;
+  L.steps.forEach(s=>{const k=s=="feat"?"feats":s;let ok;
+   if(k=="feats"){const leak=r.cfg.feats.includes("sold_price_per_sqft_agent");const missing=E.feats.filter(f=>!r.cfg.feats.includes(f));ok=!leak&&!missing.length;
+    h+=`<div class="mist ${ok?"good":""}"><b>${ok?"✔":"✘"} ${NAMES[k]}:</b> you used ${fmt(k,r.cfg)}.${ok?"":` ${leak?"<b>You used a leaky column</b> (sold price per sqft), which is unknown for a new listing. ":""}${missing.length?`Missing useful features: ${missing.join(", ")}. `:""}<div class="hint">Better: ${E.feats.join(", ")}. ${WHY.feats}</div>`}</div>`;return}
+   if(k=="cat"&&!r.cfg.feats.includes("neighborhood")){h+=`<div class="mist"><b>✘ ${NAMES[k]}:</b> you skipped neighborhood entirely, so the model couldn’t learn that location changes prices.<div class="hint">${WHY.cat}</div></div>`;return}
+   ok=r.cfg[k]===E[k]||(k=="miss"&&r.cfg.miss=="mean"&&false)||(k=="out"&&r.cfg.out=="clip");
+   h+=`<div class="mist ${ok?"good":""}"><b>${ok?"✔":"✘"} ${NAMES[k]}:</b> you chose ${fmt(k,r.cfg)}.${ok?"":` Better: ${fmt(k,E)}.<div class="hint">${WHY[k]}</div>`}</div>`})
+  h+=`</div>`});
+ if(wins<3&&S.rep<=0)h+=`<div class="card"><b>Where it went wrong:</b> your reputation hit zero before you cleared every level. Read the cards above and try again.</div>`;
+ h+=`<div class="card scene"><b>Key lesson:</b> a model is only as good as the pipeline feeding it. Inspect first, clean sensibly, never use information from the future.<br><br><button class="go" id="again">Play again</button></div>`;
+ app.innerHTML=h;$("again").onclick=intro;window.scrollTo(0,0)}
+const pct=v=>(v*100).toFixed(1)+"%";
+function burst(e){for(let i=0;i<22;i++){const s=document.createElement("span");s.textContent=e;s.className="fall";s.style.left=Math.random()*100+"vw";s.style.animationDelay=Math.random()*.8+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),3200)}}
+function diagnose(cfg,R,lv){const E=EXPERT[lv],D=S.data,all=[...D.train,...D.test],col=c=>all.map(r=>r[c]).filter(x=>x!=null),sq=col("sqft");
+ return LV[lv].steps.map(s=>{const k=s=="feat"?"feats":s,c2={...cfg,feats:[...cfg.feats]};let differs,ev="";
+  if(k=="feats"){c2.feats=[...E.feats];const leak=cfg.feats.includes("sold_price_per_sqft_agent"),lost=E.feats.filter(f=>!cfg.feats.includes(f)),junk=cfg.feats.filter(f=>f.startsWith("listing_code_"));differs=leak||lost.length>0||junk.length>0;
+   if(leak)ev+="“sold_price_per_sqft_agent” only exists after a sale. For the live house it is blank, so the model lost the shortcut it leaned on in training. ";
+   if(lost.length)ev+="You left out "+lost.join(", ")+", which the data shows move the price. ";if(junk.length)ev+=`You fed ${junk.length} meaningless listing codes to a model trained on only ${S.data.train.length} houses. With so few examples it memorises noise (overfitting) and does worse on new houses. `}
+  else{c2[k]=E[k];differs=cfg[k]!==E[k];
+   if(k=="miss")ev=`${all.length-sq.length} of ${all.length} houses have no sqft and ${all.length-col("age").length} have no age. `+(cfg.miss=="zero"?"Filling with 0 tells the model these are 0 sqft houses. ":cfg.miss=="drop"?"Dropping rows throws data away, and the customer’s own house can’t be dropped. ":`The mean sqft is ${Math.round(avg(sq))} but the median is ${med(sq)}: extreme values drag the mean. `);
+   if(k=="out")ev=`Largest sqft in the data is ${Math.max(...sq).toLocaleString()} while the median is ${med(sq).toLocaleString()}. Those typos tilt the fitted line. `;
+   if(k=="cat"){const m=n=>avg(all.filter(r=>r.neighborhood==n).map(r=>r.price));ev=`Downtown houses average ${money(m("Downtown"))} and Rural ${money(m("Rural"))}. Codes 0,1,2 force an order (Downtown, Rural, Suburb) with equal gaps, which isn’t how prices behave. `}
+   if(k=="log"){const p=all.map(r=>r.price);ev=`Prices run from ${money(Math.min(...p))} to ${money(Math.max(...p))} and rise by percentages, not fixed amounts. `}}
+  const R2=differs?runPipe(D,c2):null,gain=R2?R.mape-R2.mape:0;
+  return{k,name:NAMES[k],yours:fmt(k,cfg),better:fmt(k,E),mistake:differs&&gain>.002&&!(k=="cat"&&!cfg.feats.includes("neighborhood")),gain,ev,e2:R2?R2.mape:R.mape}})}
+function diagHTML(dg,win){const bad=dg.filter(d=>d.mistake).sort((a,b)=>b.gain-a.gain);
+ if(!bad.length)return win?"":`<p class="hint">No single step is clearly wrong. Your steps together land just over the limit. Re-read the data profile.</p>`;
+ return`<div style="text-align:left"><h3>${win?"💡 You won, but you could improve":"🔍 Why the customer walked away"}</h3>`+bad.map((d,i)=>`<div class="mist"><b>${i==0&&!win?"Biggest mistake: ":""}${d.name}.</b> You chose ${d.yours}. ${d.ev}<br><b>Do instead:</b> ${d.better}. Fixing only this step cuts your error from ${pct(R_e(d))} to ${pct(d.e2)}.</div>`).join("")+`</div>`}
+function R_e(d){return d.e2+d.gain}
+function endScene(win,dg,q,a){const cu=$("cu"),t=$("talk"),st=document.querySelector(".stage"),bad=dg.filter(d=>d.mistake).sort((x,y)=>y.gain-x.gain)[0],err=Math.abs(q-a)/a;
+ const sp=document.createElement("div");sp.className="stamp";sp.style.color=win?"var(--ok)":"var(--bad)";sp.textContent=win?"SOLD!":"NO DEAL";st.appendChild(sp);
+ if(win){t.textContent="Fair price. I’ll take it!";cu.style.left="38%";burst("💰")}
+ else{t.textContent=`“${money(q)}? That’s ${(err*100).toFixed(0)}% away from the real value.${bad?" Your "+bad.name.toLowerCase()+" step is the problem.":""} I’m leaving!”`;cu.classList.add("walk");burst("💔")}}
+function report(){S.stage="report";header();const lvls=Object.keys(S.res).map(Number),wins=lvls.filter(i=>S.res[i].win).length;
+ const rank=S.rep>=90?"🏆 Legendary Agent":S.rep>=65?"🌟 Trusted Agent":S.rep>=35?"🙂 Rising Agent":"📉 Rookie: time to retrain";
+ let h=`<div class="stage"><span class="cloud">☁️</span><span class="actor" style="left:40%">${wins?"🏆":"📉"}</span><div class="ground"></div></div><div class="card scene"><div class="big">${rank}</div><p>Final reputation <b>${S.rep}/100</b>. Levels cleared: <b>${wins}/${LV.length}</b>.</p></div>`;
+ lvls.forEach(i=>{const r=S.res[i];h+=`<div class="card"><h3 style="margin:0">Level ${i+1}: ${LV[i].name} ${r.win?"✅":"❌"}</h3><p class="hint">Your error ${pct(r.mape)} vs expert pipeline ${pct(r.exp)}</p>`+r.diag.map(d=>`<div class="mist ${d.mistake?"":"good"}"><b>${d.mistake?"✘":"✔"} ${d.name}:</b> you chose ${d.yours}.${d.mistake?` ${d.ev}<br><b>Do instead:</b> ${d.better}. Fixing only this step cuts error ${pct(d.e2+d.gain)} → ${pct(d.e2)}.<div class="hint">${WHY[d.k]}</div>`:""}</div>`).join("")+`</div>`});
+ h+=`<div class="card scene"><b>Key lesson:</b> inspect first, clean sensibly, and never use information you won’t have at prediction time.<br><br><button class="go" id="again">Play again</button></div>`;
+ app.innerHTML=h;$("again").onclick=intro;window.scrollTo(0,0)}
+intro();
+</script></body></html>
